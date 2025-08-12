@@ -11,6 +11,5 @@ tqdm
 ensure
 joblib
 types-pyYAML
-setuptools
 streamlit
 -e .
