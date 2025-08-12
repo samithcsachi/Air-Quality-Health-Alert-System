@@ -6,7 +6,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-project_name = 'Air-Quality-Health-Alert-System'
+project_name = 'Air_Quality_Health_Alert_System'
 
 list_of_files = [
     '.github/workflows/.gitkeep',
