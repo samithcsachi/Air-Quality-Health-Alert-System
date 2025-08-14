@@ -1,0 +1,6 @@
+artifacts_root: artifacts
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_URL: https://raw.githubusercontent.com/samithcsachi/Air-Quality-Health-Alert-System/main/research/Air_Quality_Data.csv
+  local_data_file: artifacts/data_ingestion/data/Air_Quality_Data.csv
