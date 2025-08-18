@@ -1,1 +1,38 @@
-key : value 
+# Data parameters
+FEATURES:
+  - pm25
+  - pm10
+  - o3
+  - no2
+  - so2
+  - co
+  - temperature_c
+  - humidity_percent
+  - wind_speed_mps
+TARGET: aqi
+SEQUENCE_LENGTH: 30      # number of past days to use for prediction
+TRAIN_TEST_SPLIT: 0.8    # proportion of data for training
+
+# Model parameters
+MODEL_TYPE: LSTM          # options: LSTM, GRU, Transformer
+HIDDEN_UNITS: 64          # number of units in LSTM/GRU layers
+NUM_LAYERS: 2
+DROPOUT: 0.2
+
+# Training parameters
+BATCH_SIZE: 32
+EPOCHS: 50
+LEARNING_RATE: 0.001
+LOSS_FUNCTION: mse        # mean squared error for regression
+METRICS:
+  - mae                  # mean absolute error
+  - rmse
+
+# Callbacks / saving
+EARLY_STOPPING: True
+EARLY_STOPPING_PATIENCE: 5
+MODEL_SAVE_PATH: models/aqi_forecast_model.h5
+
+# Logging / Misc
+SHUFFLE: True
+NORMALIZE_FEATURES: True   # scale features to 0-1 or standardize

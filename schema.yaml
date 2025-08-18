@@ -1,0 +1,19 @@
+COLUMNS:
+  city: object
+  state: object
+  latitude: float64
+  longitude: float64
+  date: datetime64[ns]
+  pm25: float64
+  pm10: float64
+  o3: float64
+  no2: float64
+  so2: float64
+  co: float64
+  temperature_c: float64
+  humidity_percent: float64
+  wind_speed_mps: float64
+  aqi: int64
+
+TARGET_COLUMN:
+  name: aqi
