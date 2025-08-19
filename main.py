@@ -2,6 +2,7 @@ from Air_Quality_Health_Alert_System import logger
 
 from Air_Quality_Health_Alert_System.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
 from Air_Quality_Health_Alert_System.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
+from Air_Quality_Health_Alert_System.pipeline.stage_03_data_transformation import DataTransformationTrainingPipeline
 
 
 STAGE_NAME = "Data Ingestion stage"
@@ -24,6 +25,19 @@ try:
     logger.info(f"\n\n{'*'*20} {STAGE_NAME} {'*'*20}\n")
     data_ingestion = DataValidationTrainingPipeline()
     data_ingestion.main()
+    logger.info(f"\n\n{'*'*20} {STAGE_NAME} completed {'*'*20}\n")
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+
+STAGE_NAME = "Data Transformation Stage"
+
+
+try:
+    logger.info(f"\n\n{'*'*20} {STAGE_NAME} {'*'*20}\n")
+    data_transformation = DataTransformationTrainingPipeline()
+    data_transformation.main()
     logger.info(f"\n\n{'*'*20} {STAGE_NAME} completed {'*'*20}\n")
 except Exception as e:
     logger.exception(e)
