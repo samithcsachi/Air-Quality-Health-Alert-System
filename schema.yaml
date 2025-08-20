@@ -1,6 +1,5 @@
 COLUMNS:
   city: object
-  state: object
   latitude: float64
   longitude: float64
   date: datetime64[ns]
@@ -10,10 +9,19 @@ COLUMNS:
   no2: float64
   so2: float64
   co: float64
+  aqi: int64
   temperature_c: float64
   humidity_percent: float64
   wind_speed_mps: float64
-  aqi: int64
+  month: int64
+  day: int64
+  year: int64
+  day_of_week: int64
+  hour: int64
+  is_weekend: int64
+  day_of_year: int64
+  season: object
+  AQI_Category: object
 
 TARGET_COLUMN:
   name: aqi

@@ -1,6 +1,7 @@
 from Air_Quality_Health_Alert_System.config.configuration import ConfigurationManager
 from Air_Quality_Health_Alert_System.components.data_transformation import DataTransformation 
 from Air_Quality_Health_Alert_System import logger
+from pathlib import Path
 
 STAGE_NAME = "Data Transformation Stage"
 
@@ -17,7 +18,7 @@ class DataTransformationTrainingPipeline:
                     config = ConfigurationManager()
                     data_transformation_config = config.get_data_transformation_config()
                     data_transformation = DataTransformation(config=data_transformation_config)
-                    data_transformation.train_test_spliting()
+                    data_transformation.train_test_splitting()
                 else:
                     raise Exception("Your schema is not valid")
         except Exception as e:
