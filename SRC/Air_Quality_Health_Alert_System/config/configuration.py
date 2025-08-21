@@ -1,6 +1,6 @@
 from Air_Quality_Health_Alert_System.constants import  *
 from Air_Quality_Health_Alert_System.utils.common import read_yaml, create_directories
-from Air_Quality_Health_Alert_System.entity.config_entity import (DataIngestionConfig, DataValidationConfig, DataTransformationConfig)
+from Air_Quality_Health_Alert_System.entity.config_entity import (DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig)
 
 
 class ConfigurationManager:
@@ -50,4 +50,28 @@ class ConfigurationManager:
         )
 
         return data_transformation_config
+    
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+        params = self.params.XGBOOST
+        schema = self.schema.TARGET_COLUMN
+
+        create_directories([config.root_dir])
+
+        model_trainer_config = ModelTrainerConfig(
+            root_dir=config.root_dir,
+            train_data_path=config.train_data_path,
+            test_data_path=config.test_data_path,
+            data_transformation_dir=self.config.data_transformation.root_dir,  # ADD THIS LINE
+            model_name=config.model_name,
+            target_column=schema.name,
+            
+            n_estimators=params.n_estimators,
+            max_depth=params.max_depth,
+            learning_rate=params.learning_rate,
+            subsample=params.subsample,
+            colsample_bytree=params.colsample_bytree,
+            random_state=params.random_state
+        )
+        return model_trainer_config
     
