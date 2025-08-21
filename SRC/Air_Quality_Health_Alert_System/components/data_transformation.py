@@ -80,7 +80,7 @@ class DataTransformation:
         if 'date' in df.columns:
             df['date'] = pd.to_datetime(df['date'])
             
-            # Temporal features (if not already present)
+            
             if 'month' not in df.columns:
                 df['month'] = df['date'].dt.month
             if 'day' not in df.columns:
@@ -222,7 +222,7 @@ class DataTransformation:
         logger.info(f"Excluded columns: {len(exclude_cols)}")
         
         if features_to_scale:
-            # Choose scaler
+            
             if method == 'minmax':
                 self.scaler = MinMaxScaler()
             elif method == 'standard':

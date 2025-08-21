@@ -41,3 +41,11 @@ class ModelTrainerConfig:
     subsample: float
     colsample_bytree: float
     random_state: int
+
+@dataclass
+class ModelEvaluationConfig:
+    root_dir: Path
+    test_data_path: Path
+    model_path: Path
+    report_path: Path  
+    target_column: str

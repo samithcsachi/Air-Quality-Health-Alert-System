@@ -1,6 +1,6 @@
 from Air_Quality_Health_Alert_System.constants import  *
 from Air_Quality_Health_Alert_System.utils.common import read_yaml, create_directories
-from Air_Quality_Health_Alert_System.entity.config_entity import (DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig)
+from Air_Quality_Health_Alert_System.entity.config_entity import (DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig,ModelEvaluationConfig)
 
 
 class ConfigurationManager:
@@ -17,7 +17,7 @@ class ConfigurationManager:
         create_directories([self.config.artifacts_root])
 
     def get_data_ingestion_config(self) -> DataIngestionConfig:
-        """Method to get the data ingestion configuration"""
+        
         config = self.config.data_ingestion
         create_directories([config.root_dir])
         data_ingestion_config = DataIngestionConfig(
@@ -75,3 +75,19 @@ class ConfigurationManager:
         )
         return model_trainer_config
     
+    
+
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+        schema = self.schema.TARGET_COLUMN
+
+        create_directories([config.root_dir])
+
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir=config.root_dir,
+            test_data_path=config.test_data_path,
+            model_path=config.model_path,
+            report_path=config.report_path,
+            target_column=schema.name
+        )
+        return model_evaluation_config

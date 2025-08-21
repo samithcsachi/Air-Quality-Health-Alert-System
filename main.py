@@ -4,6 +4,7 @@ from Air_Quality_Health_Alert_System.pipeline.stage_01_data_ingestion import Dat
 from Air_Quality_Health_Alert_System.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
 from Air_Quality_Health_Alert_System.pipeline.stage_03_data_transformation import DataTransformationTrainingPipeline
 from Air_Quality_Health_Alert_System.pipeline.stage_04_model_trainer import ModelTrainerTrainingPipeline
+from Air_Quality_Health_Alert_System.pipeline.stage_05_model_evaluation import ModelEvaluationTrainingPipeline
 
 
 STAGE_NAME = "Data Ingestion stage"
@@ -55,4 +56,17 @@ try:
     logger.info(f"\n\n{'*'*20} {STAGE_NAME} completed {'*'*20}\n")
 except Exception as e:
     logger.exception(e)
-    raise es
+    raise e
+
+
+STAGE_NAME = "Model Evaluation stage"
+
+
+try:
+    logger.info(f"\n\n{'*'*20} {STAGE_NAME} {'*'*20}\n")
+    model_trainer = ModelEvaluationTrainingPipeline()
+    model_trainer.main()
+    logger.info(f"\n\n{'*'*20} {STAGE_NAME} completed {'*'*20}\n")
+except Exception as e:
+    logger.exception(e)
+    raise e

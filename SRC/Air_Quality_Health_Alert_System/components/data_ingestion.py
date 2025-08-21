@@ -14,7 +14,7 @@ class DataIngestion:
     
         local_path = Path(self.config.local_data_file)
 
-        # Ensure the parent directory exists
+      
         local_path.parent.mkdir(parents=True, exist_ok=True)
 
         if not local_path.exists():
