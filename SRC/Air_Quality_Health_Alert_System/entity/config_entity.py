@@ -3,7 +3,7 @@ from pathlib import Path
 
 @dataclass(frozen=True)
 class DataIngestionConfig:
-    """Data Ingestion Configuration"""
+    
     root_dir: Path
     source_URL: str 
     local_data_file: Path
@@ -11,7 +11,7 @@ class DataIngestionConfig:
 
 @dataclass(frozen=True)
 class DataValidationConfig:
-    """Data Validation Configuration"""
+    
     root_dir: Path
     STATUS_FILE: str
     data_dir : Path
@@ -19,18 +19,18 @@ class DataValidationConfig:
 
 @dataclass(frozen=True)
 class DataTransformationConfig:
-    """Data Transformation Configuration"""
+    
     root_dir: Path
     data_path: Path
 
 
 @dataclass(frozen=True)
 class ModelTrainerConfig:
-    """Model Trainer Configuration"""
+    
     root_dir: Path
     train_data_path: Path
     test_data_path: Path
-    data_transformation_dir: Path  # ADD THIS - needed to load scaler
+    data_transformation_dir: Path  
     model_name: str
     target_column: str
     
@@ -49,3 +49,12 @@ class ModelEvaluationConfig:
     model_path: Path
     report_path: Path  
     target_column: str
+
+
+@dataclass
+class AlertConfig:
+    root_dir: str
+    sensitive_threshold: int
+    general_threshold: int
+    notification_method: str
+    dashboard_refresh_interval_seconds: int = 60

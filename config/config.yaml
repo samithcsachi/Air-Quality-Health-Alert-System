@@ -30,3 +30,13 @@ model_evaluation:
   test_data_path: artifacts/data_transformation/test.csv
   model_path: artifacts/model_trainer/model.joblib
   report_path: artifacts/model_evaluation/metrics.json
+
+
+alert_generation:
+  root_dir: artifacts/alert_generation
+  sensitive_threshold: 100
+  general_threshold: 150
+  notification_method: dashboard
+  dashboard:
+    refresh_interval_seconds: 60
+

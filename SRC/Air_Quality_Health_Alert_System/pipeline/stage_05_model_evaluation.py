@@ -21,10 +21,10 @@ class ModelEvaluationTrainingPipeline:
 
 if __name__ == '__main__':
     try:
-        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+        logger.info(f"\n\n{'*'*20} {STAGE_NAME} {'*'*20}\n")
         obj = ModelEvaluationTrainingPipeline()
         obj.main()
-        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+        logger.info(f"\n\n{'*'*20} {STAGE_NAME} completed {'*'*20}\n")
     except Exception as e:
         logger.exception(e)
         raise e

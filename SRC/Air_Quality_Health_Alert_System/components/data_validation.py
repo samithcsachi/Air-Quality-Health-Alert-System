@@ -25,6 +25,7 @@ class DataValidation:
                     validation_status = True
                     with open(self.config.STATUS_FILE, 'w') as f:
                         f.write(f"validation status: {validation_status}")
+            logger.info(f"All columns validation status: {validation_status}")
             return validation_status
         except Exception as e:
             raise e

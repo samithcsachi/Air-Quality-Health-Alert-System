@@ -1,6 +1,6 @@
 from Air_Quality_Health_Alert_System.constants import  *
 from Air_Quality_Health_Alert_System.utils.common import read_yaml, create_directories
-from Air_Quality_Health_Alert_System.entity.config_entity import (DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig,ModelEvaluationConfig)
+from Air_Quality_Health_Alert_System.entity.config_entity import (DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig,ModelEvaluationConfig,AlertConfig)
 
 
 class ConfigurationManager:
@@ -91,3 +91,16 @@ class ConfigurationManager:
             target_column=schema.name
         )
         return model_evaluation_config
+    
+
+   
+    def get_alert_generation_config(self) -> AlertConfig:
+        config = self.config.alert_generation
+        alert_config = AlertConfig(
+            root_dir=config.root_dir, 
+            sensitive_threshold=config.sensitive_threshold,
+            general_threshold=config.general_threshold,
+            notification_method=config.notification_method,
+            dashboard_refresh_interval_seconds=config.dashboard.refresh_interval_seconds
+        )
+        return alert_config

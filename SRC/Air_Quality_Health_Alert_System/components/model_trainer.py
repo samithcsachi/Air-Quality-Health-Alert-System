@@ -178,10 +178,8 @@ class ModelTrainer:
         
         return metrics, test_predictions
 
-    def save_model_artifacts(self, model, metrics=None):
-       
+    def save_model_artifacts(self, model, metrics=None, test_data=None):
         os.makedirs(self.config.root_dir, exist_ok=True)
-        
         
         model_artifacts = {
             'model': model,
@@ -197,7 +195,12 @@ class ModelTrainer:
         model_path = os.path.join(self.config.root_dir, self.config.model_name)
         joblib.dump(model_artifacts, model_path)
         logger.info(f"Model artifacts saved at: {model_path}")
-        
+
+        if test_data is not None:
+            test_data_path = os.path.join(self.config.root_dir, "test_data.joblib")
+            joblib.dump(test_data, test_data_path)
+            logger.info(f"Test data saved at: {test_data_path}")
+            
         
         if hasattr(model, 'feature_importances_'):
             feature_importance = pd.DataFrame({
@@ -279,8 +282,14 @@ class ModelTrainer:
             
             metrics, predictions = self.evaluate_model(best_model, train_x, train_y, test_x, test_y)
 
+            test_data_to_save = {
+            'X_test': test_x,
+            'y_test': test_y,
+            'predictions': predictions
+        }
+
             
-            self.save_model_artifacts(best_model, metrics)
+            self.save_model_artifacts(best_model, metrics, test_data_to_save)
 
             logger.info("Model training completed successfully!")
             
