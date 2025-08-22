@@ -14,5 +14,4 @@ joblib
 types-pyYAML
 streamlit
 streamlit-autorefresh
-plotly-express
--e .
+plotly
