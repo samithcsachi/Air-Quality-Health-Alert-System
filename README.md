@@ -274,5 +274,5 @@ Learn more about [MIT](https://choosealicense.com/licenses/mit/) license
 If you have any questions, suggestions, or collaborations in data science, feel free to reach out:
 - 📧 Email: [samith.sachi@gmail.com](mailto:samith.sachi@gmail.com)
 - 🔗 LinkedIn: [www.linkedin.com/in/samithchimminiyan](https://www.linkedin.com/in/samithchimminiyan)
-- 🌐 Website: [www.samithc.github.io](https://samithcsachi.github.io/)
+- 🌐 Website: [www.samithcsachi.github.io](https://samithcsachi.github.io/)
 
