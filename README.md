@@ -13,7 +13,7 @@ Badge [source](https://shields.io/)
 
 # Air-Quality-Health-Alert-System
 
-In this project we are developing Streamlit Dashboard which alerts the residents in USA about air quality health risks.This is an end to end Machine learning portfolio project which involves the Model Development and Model training. Machine Learning Project is implemented with MLOps and CI/CD pipelines. MLOps consists of Data Ingestion, Data Validation, Data Transformation, Model Trainer, Model Evaluation,Alert Generation and Dashboard. Streamlit app is deployed in the streamlit website.
+In this project, we are developing a Streamlit Dashboard that alerts the residents in the USA about air quality health risks. This is an end-to-end Machine learning portfolio project that involves Model Development and Model training. The Machine Learning Project is implemented with MLOps and CI/CD pipelines. MLOps consists of Data Ingestion, Data Validation, Data Transformation, Model Trainer, Model Evaluation, Alert Generation, and Dashboard. The Streamlit app is deployed on the Streamlit website.
 
 ## Authors
 
@@ -27,8 +27,8 @@ In this project we are developing Streamlit Dashboard which alerts the residents
 - [Tech Stack](#tech-stack)
 - [Data source](#data-source)
 - [Quick glance at the results](#Quick-glance-at-the-results)
-- [Lessons learned and recommendation](#lessons-learned-and-recommendation)
-- [Limitation and what can be improved](#limitation-and-what-can-be-improved)
+- [Lessons learned and recommendation](#lessons-learned-and-recommendations)
+- [Limitation and what can be improved](#limitations-and-what-can-be-improved)
 - [Work Flows](#workflows)
 - [Run Locally](#run-locally)
 - [Explore the notebook](#explore-the-notebook)
@@ -76,7 +76,7 @@ This solution not only demonstrates how AQI prediction and health alert systems 
 
 Data Source Link : - [https://www.kaggle.com/datasets/samithsachidanandan/air-quality-data-2019-2025](https://www.kaggle.com/datasets/samithsachidanandan/air-quality-data-2019-2025)
 
-This is a synthetic dataset generated using python library faker. This dataset includes the air quality data of all states of USA from 2019 -2025.
+This is a synthetic dataset generated using the Python library Faker. This dataset includes the air quality data of all states of the USA from 2019 -2025.
 
 Attribute Information
 
@@ -123,20 +123,24 @@ Main Welcome Screen of the Website
 
 
 
-## Lessons learned and recommendation
+## Lessons learned and recommendations
 
-- Learned how to implement advanced feature engineering including lag features, date transformations etc. 
-- Implemented feature scaling techniques which can be reused for other projects. 
-- Learned techniques to handle outliers 
-- Learned how to used RandomizedSearchCV is used for hyperparameter tunning. 
-- Used XGBoost to make the predictions. 
+- Learned how to implement advanced feature engineering, including lag features, date transformations, etc.
+
+- Implemented feature scaling techniques that can be reused for other projects.
+
+- Learned techniques to handle outliers
+
+- Learned how to use RandomizedSearchCV for hyperparameter tuning.
+
+- Used XGBoost to make the predictions.
 
 
 Our air quality prediction model is working stably and gives consistent results across training and test data. The most important factor influencing predictions is ozone, followed by wind effects, seasonality, and fine particles like PM2.5. While the model captures some trends, it currently explains only about a quarter of the variability in air quality, meaning there’s still room for improvement. To make it more accurate, we need to add better features, especially weather interactions and time-related patterns, and refine how we handle cases with zero pollution values.
 
 The model is stable and consistent, but currently it explains only about 25–28% of air quality variation. Its predictions are “okay” (about 20% error on average), but it underestimates extreme pollution events.
 
-## Limitation and what can be improved
+## Limitations and what can be improved
 
 - Limited Predictive Power:
 The model explains only about 25–28% of the variation in air quality index (AQI), meaning it misses many factors influencing air pollution changes.
@@ -151,18 +155,18 @@ Important meteorological factors like temperature, humidity etc underutilized.
 Using a synthetic dataset reduces the ability to make real-time or near-real-time predictions and limits responsiveness to sudden pollution events.
 
 - Limited Range of Prediction:
-The model predicts only a narrow AQI range, underestimating extreme high or low pollution levels critical for health alerts.
+The model predicts only a narrow AQI range, underestimating extremely high or low pollution levels critical for health alerts.
 
 - MAPE Issues :
-MAPE issues need to handled more efficiently 
+MAPE issues need to be handled more efficiently 
 
 - Dashboard-Based Alerting without Real-Time Updates:
 Without an API integrating live data updates, the alert system may have latency—alerts rely on batch updates, not continuous streaming data.
 
-Below are the things which can be done to improve the model. 
+Below are the things that can be done to improve the model. 
 - Adding more features. 
 - Use more advanced modeling techniques. 
-- Use real time API data source
+- Use real-time API data source
 
 
 
