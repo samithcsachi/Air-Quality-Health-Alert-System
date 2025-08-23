@@ -86,5 +86,5 @@ fig2 = px.scatter(
 )
 st.plotly_chart(fig2, use_container_width=True)
 
-# Auto-refresh
+
 st_autorefresh(interval=5000, limit=None, key="fizzbuzz_counter")
