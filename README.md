@@ -70,3 +70,169 @@ This solution not only demonstrates how AQI prediction and health alert systems 
 - streamlit
 - streamlit-autorefresh
 - plotly
+
+
+## Data source
+
+Data Source Link : - [https://www.kaggle.com/datasets/samithsachidanandan/air-quality-data-2019-2025](https://www.kaggle.com/datasets/samithsachidanandan/air-quality-data-2019-2025)
+
+This is a synthetic dataset generated using python library faker. This dataset includes the air quality data of all states of USA from 2019 -2025.
+
+Attribute Information
+
+1. Date: The calendar date when the measurement was recorded.
+
+2. City: The name of the city or location where the data was collected.
+
+3. Latitude: The geographical latitude coordinate of the measurement location.
+
+4. Longitude: The geographical longitude coordinate of the measurement location.
+
+5. pm25: Particulate matter smaller than 2.5 micrometers in diameter (µg/m³), a key measure of air pollution.
+
+6. pm10: Particulate matter smaller than 10 micrometers in diameter (µg/m³).
+
+7. o3: Ozone concentration (µg/m³ or ppb depending on dataset standards).
+
+8. no2: Nitrogen dioxide concentration (µg/m³ or ppb).
+
+9. so2: Sulfur dioxide concentration (µg/m³ or ppb).
+
+10. co: Carbon monoxide concentration (mg/m³ or ppm depending on units used).
+
+11. aqi: Air Quality Index, a standardized score derived from pollutant levels to reflect overall air quality.
+
+12. AQI_Category: The qualitative air quality level (e.g., Good, Moderate, Unhealthy for Sensitive Groups, Unhealthy, Very Unhealthy, Hazardous).
+
+13. temperature_c: Ambient temperature in degrees Celsius.
+
+14. humidity_percent: Relative humidity expressed as a percentage.
+
+15. wind_speed_mps: Wind speed in meters per second.
+
+
+## Quick glance at the results
+
+Main Welcome Screen of the Website
+
+![Dashboard](assets/Dashboard_1.jpg)
+![Dashboard](assets/Dashboard_2.jpg)
+
+## Lessons learned and recommendation
+
+
+
+## Limitation and what can be improved
+
+
+
+## Workflows
+
+1. Update config.yaml
+2. Update schema.yaml
+3. Update params.yaml
+4. Update entity
+5. Update the configuration manager in src config
+6. Update the components 
+7. Update teh pipeline
+8. Update the main.py
+9. Update the dashboard.py
+
+
+## Run Locally
+
+Initialize git
+
+```bash
+git init
+```
+
+Clone the project
+
+```bash
+git clone https://github.com/samithcsachi/Air-Quality-Health-Alert-System.git
+```
+
+Open Anaconda Prompt and Change the Directory and Open VSCODE by typing code .
+
+```bash
+cd E:/Air-Quality-Health-Alert-System
+
+```
+
+Create a virtual environment 
+
+```bash
+python -m venv venv
+
+```
+
+```bash
+.\venv\Scripts\activate   
+```
+
+
+install the requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+
+```bash
+
+python main.py
+
+```
+
+Run the streamlit app 
+
+```bash
+
+streamlit run dashboard.py
+
+```
+
+
+
+
+## Explore the notebook
+
+GitHub :  [https://github.com/samithcsachi/Air-Quality-Health-Alert-System](https://github.com/samithcsachi/Air-Quality-Health-Alert-System)
+
+## Contribution
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change or contribute.
+
+## License
+
+MIT License
+
+Copyright (c) 2025 Samith Chimminiyan
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Learn more about [MIT](https://choosealicense.com/licenses/mit/) license
+
+## Contact
+If you have any questions, suggestions, or collaborations in data science, feel free to reach out:
+- 📧 Email: [samith.sachi@gmail.com](mailto:samith.sachi@gmail.com)
+- 🔗 LinkedIn: [www.linkedin.com/in/samithchimminiyan](https://www.linkedin.com/in/samithchimminiyan)
+- 🌐 Website: [www.samithc.github.io](https://samithcsachi.github.io/)
+
