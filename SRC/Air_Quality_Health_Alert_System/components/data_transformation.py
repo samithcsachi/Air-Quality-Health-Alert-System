@@ -53,7 +53,7 @@ class DataTransformation:
         
       
         if numeric_cols:
-            # For time series data, use time-based interpolation first
+           
             df_with_date = df.set_index('date') if 'date' in df.columns else df
             df_with_date[numeric_cols] = df_with_date[numeric_cols].interpolate(method='time')
             df = df_with_date.reset_index() if 'date' in df_with_date.index.names else df_with_date
@@ -110,7 +110,7 @@ class DataTransformation:
                 df['hour_sin'] = np.sin(2 * np.pi * df['hour'] / 24)
                 df['hour_cos'] = np.cos(2 * np.pi * df['hour'] / 24)
             
-            # Seasonal features
+           
             df['is_winter'] = df['month'].isin([12, 1, 2]).astype(int)
             df['is_summer'] = df['month'].isin([6, 7, 8]).astype(int)
             df['is_spring'] = df['month'].isin([3, 4, 5]).astype(int)
@@ -153,6 +153,28 @@ class DataTransformation:
         logger.info(f"Features created. New shape: {df.shape}")
         return df
     
+    def add_lag_features(self, df, target_col, lags=[1, 2, 3], rolling_windows=[3, 7]):
+        
+        df = df.copy()
+        df = df.sort_values('date').reset_index(drop=True)   
+        initial_rows = len(df)
+        
+       
+        for lag in lags:
+            df[f"{target_col}_lag{lag}"] = df[target_col].shift(lag)
+        
+      
+        for window in rolling_windows:
+            df[f"{target_col}_rolling{window}"] = df[target_col].shift(1).rolling(window=window).mean()
+            df[f"{target_col}_rolling{window}_std"] = df[target_col].shift(1).rolling(window=window).std()
+        
+        
+        df = df.dropna()
+        final_rows = len(df)
+        
+        logger.info(f"Added lag features. Rows: {initial_rows} -> {final_rows} (removed {initial_rows - final_rows} rows)")
+        return df
+    
     def handle_outliers(self, df, method='iqr', factor=3.0):
         
         df = df.copy()
@@ -175,7 +197,7 @@ class DataTransformation:
                 lower_bound = Q1 - factor * IQR
                 upper_bound = Q3 + factor * IQR
                 
-                # Remove outliers
+              
                 df = df[(df[col] >= lower_bound) & (df[col] <= upper_bound)]
         
         elif method == 'zscore':
@@ -222,7 +244,7 @@ class DataTransformation:
         logger.info(f"Excluded columns: {len(exclude_cols)}")
         
         if features_to_scale:
-            
+           
             if method == 'minmax':
                 self.scaler = MinMaxScaler()
             elif method == 'standard':
@@ -232,7 +254,7 @@ class DataTransformation:
             else:
                 raise ValueError(f"Unknown scaling method: {method}")
             
-            # Fit and transform
+          
             df[features_to_scale] = self.scaler.fit_transform(df[features_to_scale])
             logger.info(f"Scaled {len(features_to_scale)} features")
         

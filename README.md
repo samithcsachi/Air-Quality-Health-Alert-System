@@ -117,12 +117,52 @@ Main Welcome Screen of the Website
 
 ![Dashboard](assets/Dashboard_1.jpg)
 ![Dashboard](assets/Dashboard_2.jpg)
+![Results1](assets/results.jpg)
+![Results2](assets/results_2.jpg)
+
+
+
 
 ## Lessons learned and recommendation
 
+- Learned how to implement advanced feature engineering including lag features, date transformations etc. 
+- Implemented feature scaling techniques which can be reused for other projects. 
+- Learned techniques to handle outliers 
+- Learned how to used RandomizedSearchCV is used for hyperparameter tunning. 
+- Used XGBoost to make the predictions. 
 
+
+Our air quality prediction model is working stably and gives consistent results across training and test data. The most important factor influencing predictions is ozone, followed by wind effects, seasonality, and fine particles like PM2.5. While the model captures some trends, it currently explains only about a quarter of the variability in air quality, meaning there’s still room for improvement. To make it more accurate, we need to add better features, especially weather interactions and time-related patterns, and refine how we handle cases with zero pollution values.
+
+The model is stable and consistent, but currently it explains only about 25–28% of air quality variation. Its predictions are “okay” (about 20% error on average), but it underestimates extreme pollution events.
 
 ## Limitation and what can be improved
+
+- Limited Predictive Power:
+The model explains only about 25–28% of the variation in air quality index (AQI), meaning it misses many factors influencing air pollution changes.
+
+- Weak Handling of Complex Patterns:
+The current model (XGBoost) struggles to fully capture the relationships in pollution data.
+
+- Feature Limitations:
+Important meteorological factors like temperature, humidity etc underutilized. 
+
+- Static Dataset (Not API):
+Using a synthetic dataset reduces the ability to make real-time or near-real-time predictions and limits responsiveness to sudden pollution events.
+
+- Limited Range of Prediction:
+The model predicts only a narrow AQI range, underestimating extreme high or low pollution levels critical for health alerts.
+
+- MAPE Issues :
+MAPE issues need to handled more efficiently 
+
+- Dashboard-Based Alerting without Real-Time Updates:
+Without an API integrating live data updates, the alert system may have latency—alerts rely on batch updates, not continuous streaming data.
+
+Below are the things which can be done to improve the model. 
+- Adding more features. 
+- Use more advanced modeling techniques. 
+- Use real time API data source
 
 
 

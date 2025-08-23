@@ -27,51 +27,11 @@ class ModelTrainer:
         else:
             logger.warning(f"No scaler found at: {scaler_path}")
             self.scaler = None
+   
 
-    def add_lag_features(self, df, target_col, lags=[1, 2, 3], rolling_windows=[3, 7]):
-        
-        df = df.copy()
-        df = df.sort_values('date').reset_index(drop=True)  # Ensure proper time ordering
-        initial_rows = len(df)
-        
-       
-        for lag in lags:
-            df[f"{target_col}_lag{lag}"] = df[target_col].shift(lag)
-        
-      
-        for window in rolling_windows:
-            df[f"{target_col}_rolling{window}"] = df[target_col].shift(1).rolling(window=window).mean()
-            df[f"{target_col}_rolling{window}_std"] = df[target_col].shift(1).rolling(window=window).std()
+    def prepare_features(self, train_data, test_data):
         
         
-        df = df.dropna()
-        final_rows = len(df)
-        
-        logger.info(f"Added lag features. Rows: {initial_rows} -> {final_rows} (removed {initial_rows - final_rows} rows)")
-        return df
-    
-
-    def prepare_features(self, full_data):
-        
-        
-        
-        full_data = full_data.sort_values('date').reset_index(drop=True)
-        
-        
-        full_data = self.add_lag_features(full_data, self.config.target_column)
-        
-        
-        split_ratio = 0.75  
-        split_index = int(len(full_data) * split_ratio)
-        
-        train_data = full_data.iloc[:split_index].copy()
-        test_data = full_data.iloc[split_index:].copy()
-        
-        logger.info(f"Time-based split:")
-        logger.info(f"  Train period: {train_data['date'].min()} to {train_data['date'].max()}")
-        logger.info(f"  Test period: {test_data['date'].min()} to {test_data['date'].max()}")
-        
-       
         columns_to_drop = ['date', 'city', 'AQI_Category']
         
         
@@ -99,6 +59,7 @@ class ModelTrainer:
         logger.info(f"  Total features: {len(self.feature_columns)}")
 
         return train_x, test_x, train_y, test_y
+
 
     def get_hyperparameter_grid(self):
         
@@ -231,11 +192,10 @@ class ModelTrainer:
             test_data = pd.read_csv(self.config.test_data_path, parse_dates=['date'])
             
             
-            full_data = pd.concat([train_data, test_data], ignore_index=True)
-            logger.info(f"Combined data shape: {full_data.shape}")
+            
 
             
-            train_x, test_x, train_y, test_y = self.prepare_features(full_data)
+            train_x, test_x, train_y, test_y = self.prepare_features(train_data, test_data)
 
           
             xgb_model = XGBRegressor(

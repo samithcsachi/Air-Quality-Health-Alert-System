@@ -1,0 +1,35 @@
+{
+    "evaluation_timestamp": "2025-08-23T15:23:25.098398",
+    "model_info": {
+        "model_type": "XGBRegressor",
+        "target_column": "aqi",
+        "model_timestamp": "2025-08-23T15:23:24.508527",
+        "feature_count": 43
+    },
+    "metrics": {
+        "mae": 0.028862112647078678,
+        "rmse": 0.07307333285164351,
+        "r2": 0.265500407660452,
+        "mape": 19.91328377336132,
+        "mean_residual": -3.921199775552029e-05,
+        "std_residual": 0.0730733223308364,
+        "range_coverage": 27.836776798985703,
+        "n_samples": 30651,
+        "prediction_stats": {
+            "mean": 0.15087376534938812,
+            "std": 0.042315199971199036,
+            "min": 0.0707559734582901,
+            "max": 0.3480927348136902
+        },
+        "actual_stats": {
+            "mean": 0.15083454470097646,
+            "std": 0.0852634961054172,
+            "min": 0.0037037037037037,
+            "max": 1.0
+        }
+    },
+    "evaluation_config": {
+        "model_path": "artifacts/model_trainer/model.joblib",
+        "test_data_path": "artifacts/data_transformation/test.csv"
+    }
+}
