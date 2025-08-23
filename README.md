@@ -15,7 +15,7 @@ Badge [source](https://shields.io/)
 
 In this project, we are developing a Streamlit Dashboard that alerts the residents in the USA about air quality health risks. This is an end-to-end Machine learning portfolio project that involves Model Development and Model training. The Machine Learning Project is implemented with MLOps and CI/CD pipelines. MLOps consists of Data Ingestion, Data Validation, Data Transformation, Model Trainer, Model Evaluation, Alert Generation, and Dashboard. The Streamlit app is deployed on the Streamlit website.
 
-Streamlit App link :[https://samithcsachi-air-quality-health-alert-system-dashboard-fwqj76.streamlit.app/](https://samithcsachi-air-quality-health-alert-system-dashboard-fwqj76.streamlit.app/)
+Streamlit App link :[https://air-quality-health-alert-system.streamlit.app/](https://air-quality-health-alert-system.streamlit.app/)
 
 ## Authors
 
