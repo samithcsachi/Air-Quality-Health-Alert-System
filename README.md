@@ -178,9 +178,9 @@ Below are the things that can be done to improve the model.
 2. Update schema.yaml
 3. Update params.yaml
 4. Update entity
-5. Update the configuration manager in src config
+5. Update the configuration manager in the src config
 6. Update the components 
-7. Update teh pipeline
+7. Update the pipeline
 8. Update the main.py
 9. Update the dashboard.py
 
@@ -199,7 +199,7 @@ Clone the project
 git clone https://github.com/samithcsachi/Air-Quality-Health-Alert-System.git
 ```
 
-Open Anaconda Prompt and Change the Directory and Open VSCODE by typing code .
+Open CMD, change the Directory, and Open VSCODE by typing code .
 
 ```bash
 cd E:/Air-Quality-Health-Alert-System
@@ -218,7 +218,7 @@ python -m venv venv
 ```
 
 
-install the requirements
+Install the requirements
 
 ```bash
 pip install -r requirements.txt
